@@ -1,52 +1,52 @@
 /* BiBoard
-    PWM:
-                        |--------------------------------
-                        |    PWM[0]           PWM[6]    |
-                        |    PWM[1]           PWM[7]    |
-                        |    PWM[2]           PWM[8]    |
-                        |-----------                    |
-                        |           |                   |
-                        |   ESP32   |  IMU         USB-C|~~~~Tail~~~~
-                        |           |                   |
-                        |-----------                    |
-                        |    PWM[3]           PWM[9]    |
-                        |    PWM[4]           PWM[10]   |
-                        |    PWM[5]           PWM[11]   |
-                        |-------------------------------|
+	PWM:
+						|--------------------------------
+						|    PWM[0]           PWM[6]    |
+						|    PWM[1]           PWM[7]    |
+						|    PWM[2]           PWM[8]    |
+						|-----------                    |
+						|           |                   |
+						|   ESP32   |  IMU         USB-C|~~~~Tail~~~~
+						|           |                   |
+						|-----------                    |
+						|    PWM[3]           PWM[9]    |
+						|    PWM[4]           PWM[10]   |
+						|    PWM[5]           PWM[11]   |
+						|-------------------------------|
 
-    Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
-    PWM[0]          GPIO4               4                   GPIO / Ain / Touch
-    PWM[1]          GPIO5               5                   GPIO / VSPI SS
-    PWM[2]          GPIO18              18                  GPIO / VSPI SCK
-    -----------------------------------------------------------------------------
-    PWM[3]          GPIO32              32                  GPIO / Ain / Touch
-    PWM[4]          GPIO33              33                  GPIO / Ain / Touch
-    PWM[5]          GPIO19              19                  GPIO / VSPI MISO
-    -----------------------------------------------------------------------------
-    PWM[6]          GPIO2               2                   boot pin, DO NOT PUT HIGH WHEN BOOT!
-    PWM[7]          GPIO15              15                  GPIO / HSPI SS / Ain Touch
-    PWM[8]          GPIO13              13                  built-in LED / GPIO / HSPI MOSI / Ain / Touch
-    -----------------------------------------------------------------------------
-    PWM[9]          GPIO12              12                  GPIO / HSPI MISO / Ain / Touch
-    PWM[10]         GPIO14              14                  GPIO / HSPI SCK / Ain / Touch
-    PWM[11]         GPIO27              27                  GPIO / Ain / Touch
+	Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
+	PWM[0]          GPIO4               4                   GPIO / Ain / Touch
+	PWM[1]          GPIO5               5                   GPIO / VSPI SS
+	PWM[2]          GPIO18              18                  GPIO / VSPI SCK
+	-----------------------------------------------------------------------------
+	PWM[3]          GPIO32              32                  GPIO / Ain / Touch
+	PWM[4]          GPIO33              33                  GPIO / Ain / Touch
+	PWM[5]          GPIO19              19                  GPIO / VSPI MISO
+	-----------------------------------------------------------------------------
+	PWM[6]          GPIO2               2                   boot pin, DO NOT PUT HIGH WHEN BOOT!
+	PWM[7]          GPIO15              15                  GPIO / HSPI SS / Ain Touch
+	PWM[8]          GPIO13              13                  built-in LED / GPIO / HSPI MOSI / Ain / Touch
+	-----------------------------------------------------------------------------
+	PWM[9]          GPIO12              12                  GPIO / HSPI MISO / Ain / Touch
+	PWM[10]         GPIO14              14                  GPIO / HSPI SCK / Ain / Touch
+	PWM[11]         GPIO27              27                  GPIO / Ain / Touch
 
-    I2C:
+	I2C:
 
-    Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
-    I2C-SCL         GPIO22              22                  Fixed - ICM20600 - Pulled
-    I2C-SDA         GPIO21              21                  Fixed = ICM20600 - Pulled
+	Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
+	I2C-SCL         GPIO22              22                  Fixed - ICM20600 - Pulled
+	I2C-SDA         GPIO21              21                  Fixed = ICM20600 - Pulled
 
-    System default, nothing to declaration!
+	System default, nothing to declaration!
 
-    Other Peripherals:
+	Other Peripherals:
 
-    Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
-    IR_Remote       GPIO23              23                  Fixed - VS1838B IR
-    DAC_Out         GPIO25              25                  Fixed - PAM8302
-    IMU_Int         GPIO26              26                  Fixed - MPU6050 Interrupt
+	Pin Name    |   ESP32 Pin   |   Arduino Pin Name    |   Alternative Function
+	IR_Remote       GPIO23              23                  Fixed - VS1838B IR
+	DAC_Out         GPIO25              25                  Fixed - PAM8302
+	IMU_Int         GPIO26              26                  Fixed - MPU6050 Interrupt
 
-    System default, nothing to declare!
+	System default, nothing to declare!
 */
 
 /* BiBoard2
@@ -58,7 +58,7 @@
 */
 
 /*  Total DOF            Walking DOF
-                   Nybble    Bittle    Cub
+				   Nybble    Bittle    Cub
    BiBoard  (12)  skip 0~4  skip 0~4    12
    BiBoard2 (16)  skip 0~8  skip 0~8  skip0~4
 */
@@ -164,9 +164,9 @@ double rate = 1.0 * MAX_READING / BASE_RANGE;
 #endif
 
 enum ServoModel_t {
-  G41 = 0,
-  P1S,
-  P2K
+	G41 = 0,
+	P1S,
+	P2K
 };
 
 // Tutorial: https://bittle.petoi.com/11-tutorial-on-creating-new-skills
@@ -293,12 +293,14 @@ char token;
 char lastToken;
 char lowerToken;
 #define CMD_LEN 10
-char *lastCmd = new char[CMD_LEN + 1];  // the last char must be '\0' for safe so CMD_LEN+1 elements are required
+// the last char must be '\0' for safe
+// so CMD_LEN+1 elements are required
+char* lastCmd = new char[CMD_LEN + 1];
 int cmdLen = 0;
 byte newCmdIdx = 0;
 int8_t periodGlobal = 0;
 #define BUFF_LEN 2507  // 1524 =125*20+7=2507
-char *newCmd = new char[BUFF_LEN + 1];
+char* newCmd = new char[BUFF_LEN + 1];
 int spaceAfterStoringData = BUFF_LEN;
 int serialTimeout;
 int lastVoltage;
@@ -358,28 +360,28 @@ int runDelay = delayMid;
 
 #ifdef NYBBLE
 int8_t middleShift[] = { 0, 15, 0, 0,
-                         -45, -45, -45, -45,
-                         10, 10, -10, -10,
-                         -30, -30, 30, 30 };
+						 -45, -45, -45, -45,
+						 10, 10, -10, -10,
+						 -30, -30, 30, 30 };
 #elif defined BITTLE
 int8_t middleShift[] = { 0, 15, 0, 0,
-                         -45, -45, -45, -45,
-                         55, 55, -55, -55,
-                         -55, -55, -55, -55 };
+						 -45, -45, -45, -45,
+						 55, 55, -55, -55,
+						 -55, -55, -55, -55 };
 
 #else  // CUB
 int8_t middleShift[] = { 0, 15, 0, 0,
-                         -45, -45, -45, -45,
-                         55, 55, -55, -55,
-                         -45, -45, -45, -45 };
+						 -45, -45, -45, -45,
+						 55, 55, -55, -55,
+						 -45, -45, -45, -45 };
 #endif
 
 // #define INVERSE_SERVO_DIRECTION
 #ifdef CUB
 int8_t rotationDirection[] = { 1, -1, 1, 1,
-                               1, -1, 1, -1,
-                               1, -1, -1, 1,
-                               1, -1, -1, 1 };
+							   1, -1, 1, -1,
+							   1, -1, -1, 1,
+							   1, -1, -1, 1 };
 int angleLimit[][2] = {
   { -120, 120 },
   { -30, 80 },
@@ -400,9 +402,9 @@ int angleLimit[][2] = {
 };
 #else
 int8_t rotationDirection[] = { 1, -1, 1, 1,
-                               1, -1, 1, -1,
-                               1, -1, -1, 1,
-                               -1, 1, 1, -1 };
+							   1, -1, 1, -1,
+							   1, -1, -1, 1,
+							   -1, 1, 1, -1 };
 #ifdef BITTLE
 int angleLimit[][2] = {
   { -120, 120 },
@@ -446,34 +448,34 @@ int angleLimit[][2] = {
 
 #ifdef X_LEG
 int currentAng[DOF] = { -30, -80, -45, 0,
-                        0, 0, 0, 0,
-                        75, 75, -75, -75,
-                        -55, -55, 55, 55 };
+						0, 0, 0, 0,
+						75, 75, -75, -75,
+						-55, -55, 55, 55 };
 int previousAng[DOF] = { -30, -80, -45, 0,
-                         0, 0, 0, 0,
-                         75, 75, -75, -75,
-                         -55, -55, 55, 55 };
+						 0, 0, 0, 0,
+						 75, 75, -75, -75,
+						 -55, -55, 55, 55 };
 #else
 int currentAng[DOF] = { -30, -80, -45, 0,
-                        0, 0, 0, 0,
-                        75, 75, 75, 75,
-                        -55, -55, -55, -55 };
+						0, 0, 0, 0,
+						75, 75, 75, 75,
+						-55, -55, -55, -55 };
 int previousAng[DOF] = { -30, -80, -45, 0,
-                         0, 0, 0, 0,
-                         75, 75, 75, 75,
-                         -55, -55, -55, -55 };
+						 0, 0, 0, 0,
+						 75, 75, 75, 75,
+						 -55, -55, -55, -55 };
 #endif
 int zeroPosition[DOF] = {};
 int calibratedZeroPosition[DOF] = {};
 
 int8_t servoCalib[DOF] = { 0, 0, 0, 0,
-                           0, 0, 0, 0,
-                           0, 0, 0, 0,
-                           0, 0, 0, 0 };
+						   0, 0, 0, 0,
+						   0, 0, 0, 0,
+						   0, 0, 0, 0 };
 
 int16_t imuOffset[9] = { 0, 0, 0,
-                         0, 0, 0,
-                         0, 0, 0 };
+						 0, 0, 0,
+						 0, 0, 0 };
 
 float expectedRollPitch[2];
 float RollPitchDeviation[2];
@@ -509,87 +511,87 @@ int slope = 1;
 #include "qualityAssurance.h"
 
 void initRobot() {
-  beep(20);
+	beep(20);
 #ifdef BiBoard_V1_0
-  Wire.begin(22, 21);
+	Wire.begin(22, 21);
 #else
-  Wire.begin();
+	Wire.begin();
 #endif
-  SoftwareVersion = SoftwareVersion + BOARD + "_" + DATE;
-  PTL('k');
-  PTLF("Flush the serial buffer...");
-  PTL("\n* Start *");
-  printToAllPorts(MODEL);
-  PTF("Software version: ");
-  printToAllPorts(SoftwareVersion);
-  soundState = i2c_eeprom_read_byte(EEPROM_BOOTUP_SOUND_STATE);
-  buzzerVolume = max(byte(0), min(byte(10), i2c_eeprom_read_byte(EEPROM_BUZZER_VOLUME)));
-  PTF("Buzzer volume: ");
-  PT(buzzerVolume);
-  PTL("/10");
-  i2cDetect();
-  i2cEepromSetup();
+	SoftwareVersion = SoftwareVersion + BOARD + "_" + DATE;
+	PTL('k');
+	PTLF("Flush the serial buffer...");
+	PTL("\n* Start *");
+	printToAllPorts(MODEL);
+	PTF("Software version: ");
+	printToAllPorts(SoftwareVersion);
+	soundState = i2c_eeprom_read_byte(EEPROM_BOOTUP_SOUND_STATE);
+	buzzerVolume = max(byte(0), min(byte(10), i2c_eeprom_read_byte(EEPROM_BUZZER_VOLUME)));
+	PTF("Buzzer volume: ");
+	PT(buzzerVolume);
+	PTL("/10");
+	i2cDetect();
+	i2cEepromSetup();
 #ifdef GYRO_PIN
-  imuSetup();
+	imuSetup();
 #endif
 #ifdef BT_BLE
-  bleSetup();
+	bleSetup();
 #endif
 #ifdef BT_SSP
-  blueSspSetup();
+	blueSspSetup();
 #endif
-  servoSetup();
-  lastCmd[0] = '\0';
-  newCmd[0] = '\0';
-  skill = new Skill();
-  skillList = new SkillList();
-  for (byte i = 0; i < randomMindListLength; i++) {
-    randomBase += choiceWeight[i];
-  }
+	servoSetup();
+	lastCmd[0] = '\0';
+	newCmd[0] = '\0';
+	skill = new Skill();
+	skillList = new SkillList();
+	for (byte i = 0; i < randomMindListLength; i++) {
+		randomBase += choiceWeight[i];
+	}
 
 #ifdef NEOPIXEL_PIN
-  ledSetup();
+	ledSetup();
 #endif
 #ifdef PWM_LED_PIN
-  pinMode(PWM_LED_PIN, OUTPUT);
+	pinMode(PWM_LED_PIN, OUTPUT);
 #endif
 #ifdef VOLTAGE
-  while (lowBattery())
-    ;
+	while (lowBattery())
+		;
 #endif
 
 #ifdef IR_PIN
-  irrecv.enableIRIn();
+	irrecv.enableIRIn();
 #endif
 
-  QA();
-  i2c_eeprom_write_byte(EEPROM_BIRTHMARK_ADDRESS, BIRTHMARK);  // finish the test and mark the board as initialized
+	QA();
+	i2c_eeprom_write_byte(EEPROM_BIRTHMARK_ADDRESS, BIRTHMARK);  // finish the test and mark the board as initialized
 
-  tQueue = new TaskQueue();
+	tQueue = new TaskQueue();
 
-  //  if (exceptions) {// Make the robot enter joint calibration state (different from initialization) if it is upside down.
-  //    strcpy(newCmd, "calib");
-  //    exceptions = 0;
-  //  }
-  //  else {// Otherwise start up normally
-  //    strcpy(newCmd, "rest");
-  //    token = 'd';
-  //    newCmdIdx = 6;
-  //  }
-  //  loadBySkillName(newCmd);
-  //
+	//  if (exceptions) {// Make the robot enter joint calibration state (different from initialization) if it is upside down.
+	//    strcpy(newCmd, "calib");
+	//    exceptions = 0;
+	//  }
+	//  else {// Otherwise start up normally
+	//    strcpy(newCmd, "rest");
+	//    token = 'd';
+	//    newCmdIdx = 6;
+	//  }
+	//  loadBySkillName(newCmd);
+	//
 
-  loadBySkillName("rest");  // must have to avoid memory crash. need to check why.
-                            // allCalibratedPWM(currentAng); alone will lead to crash
-  delay(500);
+	loadBySkillName("rest");  // must have to avoid memory crash. need to check why.
+	// allCalibratedPWM(currentAng); alone will lead to crash
+	delay(500);
 
-  initModuleManager();
+	initModuleManager();
 #ifdef GYRO_PIN
-  // read_IMU();  //ypr is slow when starting up. leave enough time between IMU initialization and this reading
-  if (!moduleActivatedQfunction(EXTENSION_DOUBLE_LIGHT) && !moduleActivatedQfunction(EXTENSION_DOUBLE_TOUCH) && !moduleActivatedQfunction(EXTENSION_GESTURE) && !moduleActivatedQfunction(EXTENSION_DOUBLE_IR_DISTANCE) && !moduleActivatedQfunction(EXTENSION_CAMERA) && !moduleActivatedQfunction(EXTENSION_ULTRASONIC))
-    tQueue->addTask((exceptions) ? T_CALIBRATE : T_REST, "");
+	// read_IMU();  //ypr is slow when starting up. leave enough time between IMU initialization and this reading
+	if (!moduleActivatedQfunction(EXTENSION_DOUBLE_LIGHT) && !moduleActivatedQfunction(EXTENSION_DOUBLE_TOUCH) && !moduleActivatedQfunction(EXTENSION_GESTURE) && !moduleActivatedQfunction(EXTENSION_DOUBLE_IR_DISTANCE) && !moduleActivatedQfunction(EXTENSION_CAMERA) && !moduleActivatedQfunction(EXTENSION_ULTRASONIC))
+		tQueue->addTask((exceptions) ? T_CALIBRATE : T_REST, "");
 #endif
-  PTL("Ready!");
-  beep(24, 50);
-  idleTimer = millis();
+	PTL("Ready!");
+	beep(24, 50);
+	idleTimer = millis();
 }

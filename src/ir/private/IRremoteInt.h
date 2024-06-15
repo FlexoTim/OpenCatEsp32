@@ -36,17 +36,18 @@
 /**
  * This struct is used to communicate with the ISR (interrupt service routine).
  */
-typedef struct {
-    // The fields are ordered to reduce memory over caused by struct-padding
-    uint8_t rcvstate;        ///< State Machine state
-    uint8_t recvpin;         ///< Pin connected to IR data from detector
-    uint8_t blinkpin;
-    uint8_t blinkflag;       ///< true -> enable blinking of pin on IR processing
-    unsigned int rawlen;         ///< counter of entries in rawbuf
-    unsigned int timer;           ///< State timer, counts 50uS ticks.
-    unsigned int rawbuf[RAW_BUFFER_LENGTH];  ///< raw data
-    uint8_t overflow;        ///< Raw buffer overflow occurred
-} irparams_t;
+ //typedef 
+struct irparams_t {
+	// The fields are ordered to reduce memory over caused by struct-padding
+	uint8_t rcvstate;       ///< State Machine state
+	uint8_t recvpin;        ///< Pin connected to IR data from detector
+	uint8_t blinkpin;
+	uint8_t blinkflag;      ///< true -> enable blinking of pin on IR processing
+	unsigned int rawlen;    ///< counter of entries in rawbuf
+	unsigned int timer;     ///< State timer, counts 50uS ticks.
+	unsigned int rawbuf[RAW_BUFFER_LENGTH];  ///< raw data
+	uint8_t overflow;       ///< Raw buffer overflow occurred
+};
 
 // ISR State-Machine : Receiver States
 #define IR_REC_STATE_IDLE      0
@@ -91,7 +92,7 @@ extern volatile irparams_t irparams;
  */
 #define MARK_EXCESS_MICROS    100
 
-/** Relative tolerance (in percent) for some comparisons on measured data. */
+ /** Relative tolerance (in percent) for some comparisons on measured data. */
 #define TOLERANCE       25
 
 /** Lower tolerance for comparison of measured data */
@@ -110,11 +111,11 @@ extern volatile irparams_t irparams;
 //#define TICKS_LOW(us)   ((int)(((us)*LTOL/MICROS_PER_TICK)))
 //#define TICKS_HIGH(us)  ((int)(((us)*UTOL/MICROS_PER_TICK + 1)))
 #if MICROS_PER_TICK == 50 && TOLERANCE == 25           // Defaults
-    #define TICKS_LOW(us)   ((int) ((us)/67 ))     // (us) / ((MICROS_PER_TICK:50 / LTOL:75 ) * 100)
-    #define TICKS_HIGH(us)  ((int) ((us)/40 + 1))  // (us) / ((MICROS_PER_TICK:50 / UTOL:125) * 100) + 1
+#define TICKS_LOW(us)   ((int) ((us)/67 ))     // (us) / ((MICROS_PER_TICK:50 / LTOL:75 ) * 100)
+#define TICKS_HIGH(us)  ((int) ((us)/40 + 1))  // (us) / ((MICROS_PER_TICK:50 / UTOL:125) * 100) + 1
 #else
-    #define TICKS_LOW(us)   ((int) ((long) (us) * LTOL / (MICROS_PER_TICK * 100) ))
-    #define TICKS_HIGH(us)  ((int) ((long) (us) * UTOL / (MICROS_PER_TICK * 100) + 1))
+#define TICKS_LOW(us)   ((int) ((long) (us) * LTOL / (MICROS_PER_TICK * 100) ))
+#define TICKS_HIGH(us)  ((int) ((long) (us) * UTOL / (MICROS_PER_TICK * 100) + 1))
 #endif
 
 //------------------------------------------------------------------------------
