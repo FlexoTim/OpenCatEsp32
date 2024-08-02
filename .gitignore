@@ -5,3 +5,6 @@
 *.cfg
 *.svd
 debug_custom.json
+/.vs
+/x64/Debug
+*.user
