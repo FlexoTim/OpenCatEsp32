@@ -199,6 +199,54 @@ start /d "$(ProjectDir)" /wait arduino-cli monitor -p COM5 -c baudrate=115200,bi
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename).elf;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Adafruit-PWM-Servo-Driver-Library\Adafruit_PWMServoDriver.h" />
+    <ClInclude Include="src\Adafruit_NeoPixel\Adafruit_NeoPixel.h" />
+    <ClInclude Include="src\bleUart.h" />
+    <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\doubleInfraredDistance.h" />
+    <ClInclude Include="src\doubleLight.h" />
+    <ClInclude Include="src\doubleTouch.h" />
+    <ClInclude Include="src\espServo.h" />
+    <ClInclude Include="src\gesture.h" />
+    <ClInclude Include="src\gesture9960\Arduino_APDS9960.h" />
+    <ClInclude Include="src\I2cEEPROM.h" />
+    <ClInclude Include="src\imu.h" />
+    <ClInclude Include="src\infrared.h" />
+    <ClInclude Include="src\InstinctBittleESP.h" />
+    <ClInclude Include="src\InstinctCubESP.h" />
+    <ClInclude Include="src\InstinctNybbleESP.h" />
+    <ClInclude Include="src\io.h" />
+    <ClInclude Include="src\ir\IRremote.h" />
+    <ClInclude Include="src\led.h" />
+    <ClInclude Include="src\moduleManager.h" />
+    <ClInclude Include="src\motion.h" />
+    <ClInclude Include="src\mpu6050\src\helper_3dmath.h" />
+    <ClInclude Include="src\mpu6050\src\I2Cdev.h" />
+    <ClInclude Include="src\mpu6050\src\MPU6050.h" />
+    <ClInclude Include="src\mpu6050\src\MPU6050_6Axis_MotionApps20.h" />
+    <ClInclude Include="src\mpu6050\src\MPU6050_6Axis_MotionApps_V6_12.h" />
+    <ClInclude Include="src\mpu6050\src\MPU6050_9Axis_MotionApps41.h" />
+    <ClInclude Include="src\OpenCat.h" />
+    <ClInclude Include="src\pcaServo.h" />
+    <ClInclude Include="src\PetoiESP32Servo\analogWrite.h" />
+    <ClInclude Include="src\PetoiESP32Servo\ESP32PWM.h" />
+    <ClInclude Include="src\PetoiESP32Servo\ESP32Servo.h" />
+    <ClInclude Include="src\PetoiESP32Servo\ESP32Tone.h" />
+    <ClInclude Include="src\pir.h" />
+    <ClInclude Include="src\QList\QList.h" />
+    <ClInclude Include="src\qualityAssurance.h" />
+    <ClInclude Include="src\randomMind.h" />
+    <ClInclude Include="src\reaction.h" />
+    <ClInclude Include="src\RgbUltrasonic.h" />
+    <ClInclude Include="src\robotArm.h" />
+    <ClInclude Include="src\skill.h" />
+    <ClInclude Include="src\sound.h" />
+    <ClInclude Include="src\taskQueue.h" />
+    <ClInclude Include="src\tools.h" />
+    <ClInclude Include="src\ultrasonic.h" />
+    <ClInclude Include="src\voice.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

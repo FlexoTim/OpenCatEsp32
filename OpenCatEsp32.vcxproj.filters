@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="OpenCatEsp32.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4e8da2bc-c248-4a12-8909-279e98ad97db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{efe1f49f-740d-4cbc-b118-7e560d4ef345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\library">
+      <UniqueIdentifier>{12228f2b-659e-4997-97d0-fd556603dee5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\bleUart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doubleInfraredDistance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doubleLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doubleTouch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\espServo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gesture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\I2cEEPROM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\infrared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InstinctBittleESP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InstinctCubESP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InstinctNybbleESP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\io.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\led.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\moduleManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\motion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenCat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pcaServo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qualityAssurance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\randomMind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\reaction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RgbUltrasonic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\robotArm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\skill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\taskQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ultrasonic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\voice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Adafruit_NeoPixel\Adafruit_NeoPixel.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Adafruit-PWM-Servo-Driver-Library\Adafruit_PWMServoDriver.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gesture9960\Arduino_APDS9960.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ir\IRremote.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\helper_3dmath.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\I2Cdev.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\MPU6050.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\MPU6050_6Axis_MotionApps_V6_12.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\MPU6050_6Axis_MotionApps20.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mpu6050\src\MPU6050_9Axis_MotionApps41.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PetoiESP32Servo\analogWrite.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PetoiESP32Servo\ESP32PWM.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PetoiESP32Servo\ESP32Servo.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PetoiESP32Servo\ESP32Tone.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+    <ClInclude Include="src\QList\QList.h">
+      <Filter>Header Files\library</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
