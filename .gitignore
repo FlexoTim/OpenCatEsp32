@@ -5,3 +5,9 @@
 *.cfg
 *.svd
 debug_custom.json
+/.vs
+/x64/Debug
+/OpenCatEsp32.vcxproj.filters
+/OpenCatEsp32.vcxproj.user
+/OpenCatEsp32.vcxproj.filters
+/OpenCatEsp32.vcxproj.user
